@@ -1,0 +1,50 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-debug
+spec:
+  selector:
+    matchLabels:
+      app: redis-debug
+  template:
+    metadata:
+      labels:
+        app: redis-debug
+    spec:
+      containers:
+      - name: redis-debug-pod
+        image: redis:latest
+        command:
+          - "sleep"
+          - "100000"
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 6379
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis
+  labels:
+    app: redis
+spec:
+  containers:
+  - image: redis:latest
+    command:
+      - "sleep"
+      - "100000"
+    imagePullPolicy: IfNotPresent
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
+    name: redis
+  restartPolicy: Always
