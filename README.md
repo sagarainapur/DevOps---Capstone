@@ -1,4 +1,4 @@
-# DevOps---Capstone
+# DevOps-Capstone
 
 As part of the Capstone, you will be doing a POC around the setup of a Kubernetes cluster on cloud and managing applications on Kubernetes. The POC will involve the following goals:
 
